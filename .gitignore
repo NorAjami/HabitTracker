@@ -1,0 +1,28 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+.vscode/
+*.user
+*.suo
+
+# ASP.NET Secrets
+secrets.json
+
+# Logs
+*.log
+
+# Publish outputs
+wwwroot/
+
+# Runtime
+*.db
+*.sqlite
+
+# Dependency folders
+node_modules/
+
+# OS-specific
+.DS_Store
+Thumbs.db

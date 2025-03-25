@@ -1,0 +1,23 @@
+@page
+@model HabitTracker.Pages.AddHabitModel
+@{
+    ViewData["Title"] = "Add Habit";
+}
+
+<h1>Add a New Habit</h1>
+
+<form method="post">
+    <div>
+        <label for="Name">Habit Name:</label>
+        <input asp-for="NewHabit.Name" />
+        <span asp-validation-for="NewHabit.Name" style="color:red"></span>
+    </div>
+
+    <div>
+        <label for="Date">Date:</label>
+        <input asp-for="NewHabit.Date" type="date" />
+        <span asp-validation-for="NewHabit.Date" style="color:red"></span>
+    </div>
+
+    <button type="submit">Add Habit</button>
+</form>
