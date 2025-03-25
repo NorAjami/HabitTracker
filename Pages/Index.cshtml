@@ -1,18 +1,20 @@
 ﻿@page
-@model IndexModel
+@model HabitTracker.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Welcome to HabitTracker";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>
-    <a asp-page="/AddHabit">➕ Add New Habit</a>
-    </p>
-    <p>
-    <a asp-page="/Today">📅 View Today's Habits</a>
-    </p>
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 mb-4">🌙 Welcome to HabitTracker</h1>
+        <p class="lead mb-5">
+            Take a deep breath. You're in control.  
+            Start building your habits in a calm and simple space.
+        </p>
 
-
+        <div class="d-flex justify-content-center gap-3">
+            <a asp-page="/AddHabit" class="btn btn-primary btn-lg">➕ Start a New Habit</a>
+            <a asp-page="/Today" class="btn btn-outline-light btn-lg">📅 View Today</a>
+        </div>
+    </div>
 </div>

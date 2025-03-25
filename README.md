@@ -1,27 +1,36 @@
-# 🧠 HabitTracker
+# 🌱 HabitTracker
 
-A beginner-friendly **Habit Tracker** built with ASP.NET Core Razor Pages.  
-Track your daily habits and build consistency over time!
+A beginner-friendly **Habit Tracker** built with ASP.NET Core Razor Pages and **MongoDB Atlas**.
+You can:
+
+✅ Add new habits  
+📅 View today's habits  
+✅ Mark them as completed  
+☁️ All data is saved in the cloud using MongoDB
+
+___
 
 ## 🚀 Features
 
-- Add new habits
-- Track habits per day
-- Mark habits as completed
-- Razor Pages architecture
-- Clean Code with comments (perfect for learning!)
+- ASP.NET Core Razor Pages (.NET 8)
+- MongoDB Atlas integration
+- Bootstrap 5 styling
+- Async methods and clean architecture
+- Dependency Injection
+
+___
 
 ## 📸 Screenshots
 
-### Welcome Home Page
+### Welcome - Home Page
 
 ![Welcome](screenshots/welcome.png)
 
-### Lägg till ny vana
+### Add a new habit
 
 ![Add Habit](screenshots/add-habit.png)
 
-### Dagens vanor
+### View today's habits
 
 ![Today's Habits](screenshots/todays-habits.png)
 
@@ -41,7 +50,6 @@ Track your daily habits and build consistency over time!
 
 ## 🧪 Future Improvements
 
-- Save habits in a database (MongoDB or SQLite)
 - Visual statistics (progress bar / charts)
 - User login with Identity
 - Docker + Azure deployment
@@ -54,6 +62,7 @@ git clone https://github.com/NorAjami/HabitTracker.git
 cd HabitTracker
 dotnet run
 ```
+
 Then open your browser at http://localhost:5000
 
  Made with love by a student who is learning by doing 🧑‍💻
