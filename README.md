@@ -38,6 +38,13 @@ ___
 
 ![MongoDB Compass](screenshots/mongoDB.png)
 
+## Play around with the index and Layout to make it more of your stile!
+![Welcome](screenshots/welcome_dark.png)
+
+![Add Habit](screenshots/habit_dark.png)
+
+![Today's Habits](screenshots/view_dark.png)
+
 ---
 
 
