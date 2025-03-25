@@ -4,20 +4,28 @@
     ViewData["Title"] = "Add Habit";
 }
 
-<h1>Add a New Habit</h1>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">➕ Add a New Habit</h1>
 
-<form method="post">
-    <div>
-        <label for="Name">Habit Name:</label>
-        <input asp-for="NewHabit.Name" />
-        <span asp-validation-for="NewHabit.Name" style="color:red"></span>
+    <form method="post" class="card p-4 shadow-sm">
+        <div class="mb-3">
+            <label asp-for="NewHabit.Name" class="form-label">Habit Name</label>
+            <input asp-for="NewHabit.Name" class="form-control" placeholder="e.g. Meditate" />
+            <span asp-validation-for="NewHabit.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="NewHabit.Date" class="form-label">Date</label>
+            <input asp-for="NewHabit.Date" class="form-control" type="date" />
+            <span asp-validation-for="NewHabit.Date" class="text-danger"></span>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-success btn-lg">Save Habit ✅</button>
+        </div>
+    </form>
+
+    <div class="text-center mt-4">
+        <a asp-page="/Today" class="btn btn-outline-secondary">← Back to Today's Habits</a>
     </div>
-
-    <div>
-        <label for="Date">Date:</label>
-        <input asp-for="NewHabit.Date" type="date" />
-        <span asp-validation-for="NewHabit.Date" style="color:red"></span>
-    </div>
-
-    <button type="submit">Add Habit</button>
-</form>
+</div>

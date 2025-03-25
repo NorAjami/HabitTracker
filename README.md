@@ -39,4 +39,4 @@ dotnet run
 ```
 Then open your browser at http://localhost:5000
 
-🧑‍💻 Made with love by a student who is learning by doing ❤️
+ Made with love by a student who is learning by doing 🧑‍💻
