@@ -1,33 +1,31 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using HabitTracker.Models;
+using HabitTracker.Services;
 
 namespace HabitTracker.Pages
 {
     public class AddHabitModel : PageModel
     {
-        // This will hold the data sent from the form
-        [BindProperty]
-        public Habit NewHabit { get; set; }
+        private readonly HabitService _habitService;
 
-        public void OnGet()
+        public AddHabitModel(HabitService habitService)
         {
-            // This method is called when the page loads (GET request)
+            _habitService = habitService;
         }
+
+        [BindProperty]
+        public Habit NewHabit { get; set; } = new Habit();
+
+        public void OnGet() { }
 
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
-            {
-                // If the form is invalid, reload the page
                 return Page();
-            }
 
-            // Just printing to console for now (replace later with DB/in-memory)
-            Console.WriteLine($"New habit added: {NewHabit.Name}");
-
-            // Redirect back to homepage for now
-            return RedirectToPage("/Index");
+            _habitService.AddHabit(NewHabit);
+            return RedirectToPage("/Today");
         }
     }
 }

@@ -1,22 +1,30 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using HabitTracker.Models;
+using HabitTracker.Services;
 
 namespace HabitTracker.Pages
 {
     public class TodayModel : PageModel
     {
-        // Temporary in-memory list of habits
-        public List<Habit>? HabitsToday { get; set; }
+        private readonly HabitService _habitService;
+
+        public TodayModel(HabitService habitService)
+        {
+            _habitService = habitService;
+        }
+
+        public List<Habit> HabitsToday { get; set; } = new();
 
         public void OnGet()
         {
-            // Normally, we'd get this from a database or service
-            HabitsToday = new List<Habit>
-            {
-                new Habit { Id = 1, Name = "Meditate", Date = DateTime.Today, IsCompleted = false },
-                new Habit { Id = 2, Name = "Drink Water", Date = DateTime.Today, IsCompleted = true },
-                new Habit { Id = 3, Name = "Exercise", Date = DateTime.Today, IsCompleted = false }
-            };
+            HabitsToday = _habitService.GetHabitsByDate(DateTime.Today);
+        }
+
+        public IActionResult OnPostToggle(int id)
+        {
+            _habitService.ToggleHabitStatus(id);
+            return RedirectToPage();
         }
     }
 }
