@@ -7,9 +7,9 @@ namespace HabitTracker.Pages
 {
     public class AddHabitModel : PageModel
     {
-        private readonly HabitService _habitService;
+        private readonly MongoHabitService _habitService;
 
-        public AddHabitModel(HabitService habitService)
+        public AddHabitModel(MongoHabitService habitService)
         {
             _habitService = habitService;
         }
@@ -19,12 +19,12 @@ namespace HabitTracker.Pages
 
         public void OnGet() { }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
                 return Page();
 
-            _habitService.AddHabit(NewHabit);
+            await _habitService.AddHabitAsync(NewHabit);
             return RedirectToPage("/Today");
         }
     }

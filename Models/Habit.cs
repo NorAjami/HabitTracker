@@ -1,11 +1,17 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace HabitTracker.Models
 {
-    // Represents a habit that the user wants to track
     public class Habit
     {
-        public int Id { get; set; }              // Unique identifier
-        public string? Name { get; set; }         // Name of the habit (e.g. "Drink water")
-        public DateTime Date { get; set; }       // The date this habit is tracked for
-        public bool IsCompleted { get; set; }    // Whether the habit was completed on that day
+        // MongoDB will automatically generate this as a unique identifier
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+
+        public string? Name { get; set; }
+        public DateTime Date { get; set; }
+        public bool IsCompleted { get; set; }
     }
 }

@@ -1,7 +1,6 @@
 using HabitTracker.Models;
-using Microsoft.Extensions.Options;
-using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace HabitTracker.Services
 {
@@ -9,6 +8,7 @@ namespace HabitTracker.Services
     {
         private readonly IMongoCollection<Habit> _habits;
 
+        // 🚪 Ansluter till databasen via din connection string
         public MongoHabitService(IConfiguration config)
         {
             var client = new MongoClient(config["MongoDB:ConnectionString"]);
@@ -16,20 +16,33 @@ namespace HabitTracker.Services
             _habits = database.GetCollection<Habit>(config["MongoDB:CollectionName"]);
         }
 
+        // 🧠 Hämtar vanor som skapades under ett visst dygn (för t.ex. dagens datum)
         public async Task<List<Habit>> GetHabitsByDateAsync(DateTime date)
         {
-            return await _habits.Find(h => h.Date.Date == date.Date).ToListAsync();
+            var startOfDay = date.Date;
+            var endOfDay = startOfDay.AddDays(1);
+
+            var filter = Builders<Habit>.Filter.And(
+                Builders<Habit>.Filter.Gte(h => h.Date, startOfDay),
+                Builders<Habit>.Filter.Lt(h => h.Date, endOfDay)
+            );
+
+            return await _habits.Find(filter).ToListAsync();
         }
 
+        // ➕ Lägger till en ny vana i databasen
         public async Task AddHabitAsync(Habit habit)
         {
             await _habits.InsertOneAsync(habit);
         }
 
-        public async Task ToggleHabitStatusAsync(int id)
+        // ✅ Växlar om vanan är klar eller inte (baserat på ID)
+        public async Task ToggleHabitStatusAsync(string id)
         {
             var filter = Builders<Habit>.Filter.Eq(h => h.Id, id);
+
             var habit = await _habits.Find(filter).FirstOrDefaultAsync();
+
             if (habit != null)
             {
                 habit.IsCompleted = !habit.IsCompleted;
