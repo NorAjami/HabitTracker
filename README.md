@@ -33,7 +33,7 @@ Track your daily habits and build consistency over time!
 ## 🧰 How to Run Locally
 
 ```bash
-git clone https://github.com/dittnamn/HabitTracker.git
+git clone https://github.com/NorAjami/HabitTracker.git
 cd HabitTracker
 dotnet run
 ```

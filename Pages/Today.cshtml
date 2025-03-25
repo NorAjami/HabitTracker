@@ -1,0 +1,40 @@
+@page
+@model HabitTracker.Pages.TodayModel
+@{
+    ViewData["Title"] = "Today's Habits";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">📅 Today's Habits</h1>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Habit</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var habit in Model.HabitsToday)
+                {
+                    <tr>
+                        <td class="fw-bold">@habit.Name</td>
+                        <td>
+                            @if (habit.IsCompleted)
+                            {
+                                <span class="badge bg-success">✔ Completed</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">❌ Not done</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-page="/AddHabit" class="btn btn-primary btn
