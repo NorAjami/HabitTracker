@@ -13,7 +13,24 @@ Track your daily habits and build consistency over time!
 
 ## 📸 Screenshots
 
-*Coming soon...*
+### Welcome Home Page
+
+![Welcome](screenshots/welcome.png)
+
+### Lägg till ny vana
+
+![Add Habit](screenshots/add-habit.png)
+
+### Dagens vanor
+
+![Today's Habits](screenshots/todays-habits.png)
+
+### MongoDB Compass
+
+![MongoDB Compass](screenshots/mongoDB.png)
+
+---
+
 
 ## 🛠️ Tech Stack
 
